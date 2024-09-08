@@ -1,0 +1,72 @@
+:root {
+    --bs-success-rgb: 71, 222, 152 !important;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Apple Chancery, cursive;
+}
+
+
+
+.btn-info.text-light:hover,
+.btn-info.text-light:focus {
+    background: #000;
+}
+table, tbody, td, tfoot, th, thead, tr {
+    border-color: #d8c5c5 !important;
+    border-style: solid;
+    border-width: 1px !important;
+}
+
+.wave-header{
+    min-height: 40vh;
+    width: 100%;
+    background: rgb(141, 3, 3);
+    position: relative;
+    display: flex;
+   
+    
+}
+.wave-header h1 {
+    margin-top: 10px;
+    margin: 10px;
+    font-size: 2em;
+    color: #fff;
+    font-family: 'raleway';
+    font-weight: 700;
+    transition: 0.5s;
+    text-decoration: none;
+    
+}
+.wave-header a{
+    text-decoration: none;
+}
+
+svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.left{
+    margin: 20px;
+   margin-left: 25px;
+    width: 20px;
+    height: 20px;
+    transition: 0.5s;
+    float: left;
+    box-shadow: -2px 2px 0 rgb(247, 241, 241);
+    cursor: pointer;
+}
+
+.left {
+    transform: rotate(45deg);
+}
+
+.left:hover {
+    box-shadow: -2px 2px 0 rgb(107, 0, 0);
+}
+

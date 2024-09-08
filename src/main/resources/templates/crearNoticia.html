@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website with a contact Form 01</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <!-- GOOGLE FONTs -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+<header>
+
+</header>
+
+<body>
+    
+    <div class="content">
+        
+        <h1 class="logo">Contact <span>Us</span></h1>
+
+        <div class="contact-wrapper animated bounceInUp">
+            <div class="contact-form">
+                <h3>Nueva - Noticia</h3>
+                <form th:action="@{/noticia}" method="post" th:object="${noticia}"  enctype="multipart/form-data">
+                    <p>
+                        <label>Titulo</label>
+                        <input type="text" th:field="*{titulo}" name="title">
+                    </p>
+                    <p>
+                        <label>Imagen</label>
+                        <input type="file" name="imagen"  id="imagen" accept="image/*" required>
+                    </p>
+                    
+                    <p class="block">
+                       <label>Descripción</label> 
+                        <textarea name="message" th:field="*{descripcion}" rows="3"></textarea>
+                    </p>
+                    <button class="btn btn-primary" type="submit" >PUBLICAR</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h4>Comparte</h4>
+                <ul>
+                    <li><i class="fas fa-envelope-open-text"></i> contact@website.com</li>
+                </ul>
+                <p>¡Escribir noticias es una oportunidad increíble para informar, inspirar y conectar con tu audiencia!</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<footer>
+    <div class="inner-footer">
+      <div class="container">
+        
+      </div>
+    </div>
+
+    <div class="last-div">
+      <div class="container">
+        <div class="row">
+          <div class="copyright">
+            &copy; ProOnliPc Theme. All Rights Reserved
+            <div class="credits">
+         
+              <a href="http://www.servitecflhuaraz.com//">ProOnliPc Themes</a> by <a href="http://www.servitecflhuaraz.com/">ProOnliPc</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+    </div>
+  </footer>
+</html>

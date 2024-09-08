@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Login</title>
+
+</head>
+
+<body>
+
+    <header>
+        <a href="https://usmp.edu.pe/" class="logo">
+            <img th:src="@{/img/logos/__logo.png__}" class="card-img-top" th:alt="${usuario.perfil}" href= "https://usmp.edu.pe/">
+            <h2 class="frase"> "AMA LO QUE HACES. APRENDE COMO"</h2>
+        </a>
+    </header>
+
+
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <h2> ¡Bienvenido!</h2>
+                <p>Crea una cuenta y se parte de esta gran comunidad, goza de todas las funcionalidades que tenemos.</p>
+                <input type="button" value="Crear cuenta" id="sign-in">
+            </div> 
+        </div>
+        <div class="form-information register">
+            <div class="form-information-childs">
+                <h2>Iniciar Sesión</h2>
+                <div class="icons">
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-linkedin'></i>
+                </div>
+                <p> Puedes ingresar por las siguientes cuentas</p>
+                <form class="forms" th:action="${inicioSesion}"method="post" th:object="${usuario}">
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        <input type="email"  id="email" name="email" th:field="*{email}"  required placeholder="Correo Electronico">
+                    </label>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password"  id="contraseña" name="contraseña" th:field="*{password}"required placeholder="Contraseña">
+                    </label>
+                    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+                    <input type="submit" placeholder="Ingresar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-form login hide">
+        <div class="information">
+            <div class="info-childs">
+                <h2>REGISTRARSE </h2>
+                
+                <p>Para unirte a nuestra comunidad por favor inicia sesión con
+                    tus datos</p>
+                <input type="button" value="Inicio" id="sign-up">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Crear una cuenta</h2>
+                <br>
+                <form class="form" th:action="@{registro}" method="post" th:object="${usuario}" enctype="multipart/form-data">
+                    <div class="form-column">
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input type="text" placeholder="Nombre" id="nombre" class="form-control" th:field="*{nombres}" required autofocus="autofocus">
+                        </label>
+                        <label>
+                            <i class='bx bx-id-card'></i>
+                            <input type="text" placeholder="DNI" class="form-control" id="dni" th:field="*{dni}" required>
+                        </label>
+                        <label>
+                            <i class='bx bx-world'></i>
+                            <input type="text" placeholder="País" class="form-control" id="pais" th:field="*{pais}" required autofocus="autofocus">
+                        </label>
+                        <label>
+                            <i class='bx bx-envelope'></i>
+                            <input type="email" placeholder="Email " class="form-control" id="email" th:field="*{email}" required autofocus="autofocus">
+                        </label> 
+                        <input type="file" name="imagen"  id="imagen" accept="image/*" required>
+                    </div>
+                    <div class="form-column">
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input type="text" placeholder="Apellidos" id="apellidos" class="form-control"th:field="*{apellidos}" required autofocus="autofocus">
+                        </label>
+                        <label>
+                            <i class='bx bx-phone'></i>                          
+                            <input type="text" placeholder="Telefono" class="form-control" id="numero" th:field="*{numero}" required autofocus="autofocus">
+                        </label>
+                        <label>
+                            <i class='bx bx-map'></i>
+                            <input type="text" placeholder="Ciudad" class="form-control" id="ciudad" th:field="*{ciudad}" required autofocus="autofocus">
+                        </label>
+                        <label>
+                            <i class='bx bx-lock-alt'></i> 
+                            <input type="password" placeholder="Contraseña" class="form-control" id="password" th:field="*{password}" required autofocus="autofocus">
+                        </label>
+                        <div class="form-group">
+                            <label for="listaDeRoles" class="form-label">Rol: <br>
+                                <select th:field="*{roles}" class="form-control" required>
+                                    <th:block th:each="rol:${listaDeRoles}">
+                                        <option th:text="${rol.nombre}" th:value="${rol.id}"></option>
+                                    </th:block>
+                                </select>
+                            </label>
+                            <input type="submit" value="Iniciar Sesión">
+                        </div>
+                    </div>
+                    
+                </form>
+                <!--<div class="col-12">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                          <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo con los terminos y condiciones
+                          </label>
+                          <br>
+                        </div>
+                      </div>-->
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/script.js}"></script>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+              <div class="contact-info">
+                <div class="info">
+                  <p>Número de contacto: +123456789</p>
+                  <p>Dirección: Calle Principal, Ciudad, País</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </footer>
+
+</body>
+
+
+</html>

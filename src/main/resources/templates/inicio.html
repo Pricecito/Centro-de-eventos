@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Efecto Hover a Una Imagen</title>
+
+    <link rel="stylesheet" th:href="@{/css/estilos - index.css}">
+   
+</head>
+
+<header>
+    <a th:href="@{/inicioSesion}" class="logo">
+        <img href= "https://usmp.edu.pe/" th:src="@{/img/logos/__logo.png__}" alt="logo de la universidad">
+        
+    </a>
+
+</header>
+
+
+<body>
+    
+    <div class="wave-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path 
+            fill="#fff" fill-opacity="1" d="M0,192L80,208C160,224,320,256,480,245.3C640,235,800,181,960,144C1120,107,1280,85,1360,74.7L1440,64L1440,320L1360
+    ,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+         <a th:href="@{/inicioSesion}">
+             <div  class="left"></div>
+         </a>  
+        
+         <a th:href="@{/inicioSesion}" class="sin-subrayado">
+            <h1> Menú</h1>
+         </a>
+          
+    </div>
+ 
+    <div class="contenedor">
+       <a th:href="@{/noticia}">
+            <figure >
+                <img src="https://i.pinimg.com/736x/30/a3/25/30a32597e60b56c5e1e8f6706f490641.jpg">
+                <div class="capa">
+                    <h3>NOTICIAS</h3>
+                    <p> ¡Mantente actualizado con las últimas novedades de nuestra universidad!</p>
+                </div>
+            </figure>            
+        </a>
+        <a href="#">
+            <figure>
+                <img src="https://www.shutterstock.com/image-vector/location-icon-vector-on-white-260nw-1265359729.jpg">
+                <div class="capa">
+                    <h3>UBICACIÓN</h3>
+                    <p> Encuentra nuestras sedes de Arequipa</p>
+                </div>
+            </figure>
+        </a>
+        <a th:href="@{/bolsaDeTrabajo}">
+            <figure>
+                <img src="https://previews.123rf.com/images/nikvector/nikvector1608/nikvector160800194/61515754-icono-de-b%C3%BAsqueda-de-empleo-para-web-y-m%C3%B3viles.jpg">
+                <div class="capa">
+                    <h3>BOLSA DE TRABAJO</h3>
+                    <p> ¡Prepárate para tu futuro profesional! </p>
+                </div>
+            </figure>
+        </a>
+        <a th:href="@{/evento}">
+            <figure>
+                <img src="https://w7.pngwing.com/pngs/618/742/png-transparent-computer-icons-event-management-symbol-calendar-date-miscellaneous-angle-text.png">
+                <div class="capa">
+                    <h3>Evento</h3>
+                    <p>¡Descubre los eventos académicos que enriquecerán tu experiencia universitaria con conocimiento!</p>
+                  
+                </div>
+            </figure>
+        </a>
+        <a href="#">
+            <figure>
+                <img src="https://jjcc-ag.com/wp-content/uploads/2019/10/mision-vision.png">
+                <div class="capa">
+                    <h3>VISIÓN Y MISIÓN</h3>
+                   <p></p>
+                </div>
+            </figure>
+        </a>
+        <a th:href="@{/curso}">
+            <figure>
+                <img src="https://cdn-icons-png.flaticon.com/512/5351/5351078.png">
+                <div class="capa">
+                    <h3>CURSOS</h3>
+                    <p>"Explora nuestra amplia oferta de cursos universitarios para potenciar tu desarrollo académico y profesional."</p>
+                </div>
+            </figure>  
+        </a>
+        <br>
+        <br>
+        
+    </div>
+    
+</body>
+
+
+</html>
