@@ -1,85 +1,151 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <title>Registro e Inicio de sesion</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <div class="container">
-        <div class="row">
-            <div class="col-2">
-                Columna de 2
+      <div class="row">
+        <div class="col-2">Columna de 2</div>
+        <div class="col-10">
+          <form
+            th:action="@{/registro}"
+            method="post"
+            th:object="${usuario}"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="nombres" class="form-label">Nombre:</label>
+              <input
+                id="nombre"
+                type="text"
+                class="form-control"
+                th:field="*{nombres}"
+                required
+                autofocus="autofocus"
+              />
             </div>
-            <div class="col-10">
-                <div th:if="${param.exito}">
-                    <div class="alert alert-info ">
-                        Se ha registrado exitosamente a la aplicación
-                    </div>
-                    <h1>Registrate</h1>
-                </div>
-                <form th:action="@{/registro}" method="post" th:object="${usuario}" enctype="multipart/form-data">
-                    
-                    <div class="form-group">
-                        <label for="nombres" class="form-label">Nombre:</label>
-                        <input id="nombre" type="text" class="form-control" th:field="*{nombres}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="apellidos" class="form-label">Apellidos:</label>
-                        <input id="apellidos" type="text" class="form-control"th:field="*{apellidos}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label" >Email:</label>
-                        <input type="email" class="form-control" id="email" th:field="*{email}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="password" th:field="*{password}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="dni" class="form-label">DNI:</label>
-                        <input type="number" class="form-control" id="dni" placeholder="Insertar maximo 8 caracteres" th:field="*{dni}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="numero" class="form-label">Número:</label>
-                        <input type="number" class="form-control" id="numero" placeholder="Insertar maximo 9 caracteres" th:field="*{numero}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="pais" class="form-label">Pais:</label>
-                        <input type="text" class="form-control" id="pais" th:field="*{pais}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="ciudad" class="form-label">Ciudad:</label>
-                        <input type="text" class="form-control" id="ciudad" th:field="*{ciudad}" required autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label >Selecciona una imagen:</label><br>
-                        <input type="file" name="imagen"  id="imagen" accept="image/*" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ciudad" class="form-label">Rol:</label>
-                        <select th:field="*{roles}" class="form-control" required>
-                        <th:block th:each="rol:${listaRoles}">
-                            <option th:text="${rol.nombre}" th:value="${rol.id}"></option>
-                        </th:block>
-                    </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Registrar</button>
-                        <span>Si estas  registrado <a th:href="@{/inicioSesion}">Inicia sesion aqui</a></span>
-                    </div>
-                </form>   
+            <div class="form-group">
+              <label for="apellidos" class="form-label">Apellidos:</label>
+              <input
+                id="apellidos"
+                type="text"
+                class="form-control"
+                th:field="*{apellidos}"
+                required
+                autofocus="autofocus"
+              />
             </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                th:field="*{email}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password" class="form-label">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                th:field="*{password}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="dni" class="form-label">DNI:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="dni"
+                placeholder="Insertar maximo 8 caracteres"
+                th:field="*{dni}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="numero" class="form-label">Número:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="numero"
+                placeholder="Insertar maximo 9 caracteres"
+                th:field="*{numero}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="pais" class="form-label">Pais:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="pais"
+                th:field="*{pais}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ciudad" class="form-label">Ciudad:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ciudad"
+                th:field="*{ciudad}"
+                required
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-group">
+              <label>Selecciona una imagen:</label><br />
+              <input
+                type="file"
+                name="imagen"
+                id="imagen"
+                accept="image/*"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="ciudad" class="form-label">Rol:</label>
+              <select th:field="*{roles}" class="form-control" required>
+                <th:block th:each="rol:${listaRoles}">
+                  <option th:text="${rol.nombre}" th:value="${rol.id}"></option>
+                </th:block>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success">Registrar</button>
+              <span
+                >Si estas registrado
+                <a th:href="@{/inicioSesion}">Inicia sesion aqui</a></span
+              >
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-    
 
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

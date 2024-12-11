@@ -4,14 +4,16 @@
  */
 package com.fia.proyecto.controllers;
 
-import com.fia.proyecto.models.entity.Usuarios;
-import com.fia.proyecto.models.service.UsuarioService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fia.proyecto.models.entity.Usuarios;
+import com.fia.proyecto.models.service.UsuarioService;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -22,12 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     @Autowired
     private UsuarioService uSvc;
-    
+
     @GetMapping
-    public String index(Model modelo, HttpSession session){
-        Usuarios usuarioIniciado=(Usuarios)session.getAttribute("usuarioIniciado");
+    public String index(Model modelo, HttpSession session) {
+        Usuarios usuarioIniciado = (Usuarios) session.getAttribute("userSesion");
         modelo.addAttribute("usuarioIniciado", usuarioIniciado);
         return "inicio";
     }
-    
+
 }

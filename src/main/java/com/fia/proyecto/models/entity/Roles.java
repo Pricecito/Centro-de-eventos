@@ -4,29 +4,30 @@
  */
 package com.fia.proyecto.models.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.util.List;
 
 /**
  *
  * @author JM Gutierrez
  */
 @Entity
-@Table(name="Roles")
+@Table(name = "Roles")
 public class Roles {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @OneToMany(mappedBy="roles")
+    @ManyToMany(mappedBy = "roles")
     private List<Usuarios> listaUsuarios;
 
     public Roles(long id, String nombre) {
@@ -64,5 +65,5 @@ public class Roles {
     public void setListaUsuarios(List<Usuarios> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
-    
+
 }
