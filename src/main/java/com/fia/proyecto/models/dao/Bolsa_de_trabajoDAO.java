@@ -8,11 +8,7 @@ import com.fia.proyecto.models.entity.Bolsa_de_trabajo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author JM Gutierrez
- */
 @Repository
-public interface Bolsa_de_trabajoDAO extends JpaRepository<Bolsa_de_trabajo,Long>{
-    
+public interface Bolsa_de_trabajoDAO extends JpaRepository<Bolsa_de_trabajo, Long> {
+
 }
