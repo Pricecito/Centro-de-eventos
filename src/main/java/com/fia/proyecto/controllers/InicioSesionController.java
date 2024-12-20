@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fia.proyecto.models.entity.Usuarios;
-import com.fia.proyecto.models.service.UsuarioService;
+import com.fia.proyecto.models.service.IService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("inicioSesion")
 public class InicioSesionController {
     @Autowired
-    private UsuarioService uSvc;
+    private IService<Usuarios> usuariosService;
 
     @GetMapping
     public String mostrarFormulario(Model model) {
@@ -27,9 +27,9 @@ public class InicioSesionController {
 
     @PostMapping
     public String iniciarSesion(Usuarios usuario, Model model, HttpSession session) {
-        Usuarios u = uSvc.buscarXEmail(usuario);
-        if (uSvc.buscarEmail(usuario) && usuario.getPassword().equals(u.getPassword())) {
-            session.setAttribute("userSesion", uSvc.buscarXEmail(usuario));
+        Usuarios u = usuariosService.buscarXEmail(usuario);
+        if (usuariosServiceusuariosService.buscarEmail(usuario) && usuario.getPassword().equals(u.getPassword())) {
+            session.setAttribute("userSesion", usuariosService.buscarXEmail(usuario));
             model.addAttribute("usuarioIniciado", usuario);
             return "redirect:/inicio";
         } else {

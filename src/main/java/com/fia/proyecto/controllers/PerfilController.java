@@ -5,7 +5,8 @@
 package com.fia.proyecto.controllers;
 
 import com.fia.proyecto.models.entity.Usuarios;
-import com.fia.proyecto.models.service.UsuarioService;
+import com.fia.proyecto.models.service.IService;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +23,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("perfil")
 public class PerfilController {
-    @Autowired 
-    private UsuarioService uSvc;
-    
+    @Autowired
+    private IService<Usuarios> uSvc;
+
     @ModelAttribute("usuarioIniciado")
-    public Usuarios mostrarPerfil(Model modelo, HttpSession session){
-        Usuarios usuarioIniciado=(Usuarios)session.getAttribute("usuarioIniciado");
+    public Usuarios mostrarPerfil(Model modelo, HttpSession session) {
+        Usuarios usuarioIniciado = (Usuarios) session.getAttribute("usuarioIniciado");
         return usuarioIniciado;
     }
+
     @GetMapping
-    public String mostrarDetalles(){
+    public String mostrarDetalles() {
         return "perfil";
-    }   
-    
-    
+    }
+
 }

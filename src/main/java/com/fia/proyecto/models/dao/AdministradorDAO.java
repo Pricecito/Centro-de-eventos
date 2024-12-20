@@ -5,14 +5,12 @@
 package com.fia.proyecto.models.dao;
 
 import com.fia.proyecto.models.entity.Administrador;
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author JM Gutierrez
- */
+
 @Repository
-public interface AdministradorDAO extends CrudRepository<Administrador,Long>{
+public interface AdministradorDAO extends JpaRepository<Administrador,Long>{
     
 }

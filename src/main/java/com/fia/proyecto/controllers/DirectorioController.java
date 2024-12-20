@@ -25,22 +25,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DirectorioController {
     @Autowired
     private DirectorioService dSvc;
-    
+
     @GetMapping
-    public String verDirectorio(Model modelo){
-        modelo.addAttribute("listaEventos",dSvc.findAll());
+    public String verDirectorio(Model modelo) {
+        modelo.addAttribute("listaEventos", dSvc.findAll());
         return "verEventos";
     }
-    
+
     @GetMapping("crearEvento")
-    public String crearEvento(Model modelo){
-        modelo.addAttribute("evento",new Eventos());
+    public String crearEvento(Model modelo) {
+        modelo.addAttribute("evento", new Eventos());
         return "crearEvento";
     }
+
     @PostMapping
-    public String guardarContacto(@ModelAttribute("evento")Directorio directorio, Model modelo){
+    public String guardarContacto(@ModelAttribute("evento") Directorio directorio, Model modelo) {
         dSvc.saveOrUpdate(directorio);
         return "redirect:/evento";
     }
 }
-

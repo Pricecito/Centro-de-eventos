@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fia.proyecto.models.entity.Usuarios;
-import com.fia.proyecto.models.service.RolesService;
-import com.fia.proyecto.models.service.UsuarioService;
-
+import com.fia.proyecto.models.service.IService;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -26,15 +24,11 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("registro")
 public class RegistroUsuarioController {
     @Autowired
-    private InicioSesionController iC;
-    @Autowired
-    private UsuarioService usuarioService;
-    @Autowired
-    private RolesService rolSvc;
+    private IService<Usuarios> usuarioService;
 
     @ModelAttribute("usuario")
     public Usuarios retornarNuevoUsuario(Model modelo) {
-        modelo.addAttribute("listaDeRoles", rolSvc.findAll());
+        modelo.addAttribute("listaDeRoles", usuarioService.findAll());
         return new Usuarios();
     }
 

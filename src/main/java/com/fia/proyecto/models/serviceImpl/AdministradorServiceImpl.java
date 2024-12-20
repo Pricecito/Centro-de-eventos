@@ -6,39 +6,38 @@ package com.fia.proyecto.models.serviceImpl;
 
 import com.fia.proyecto.models.dao.AdministradorDAO;
 import com.fia.proyecto.models.entity.Administrador;
-import com.fia.proyecto.models.service.AdministradorService;
+import com.fia.proyecto.models.service.IService;
+
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author JM Gutierrez
- */
 @Service
-public class AdministradorServiceImpl implements AdministradorService {
+@Lazy
+@Slf4j
+public class AdministradorServiceImpl implements IService<Administrador> {
     @Autowired
     private AdministradorDAO administradorDao;
-    @Transactional
+
     public List<Administrador> findAll() {
-       return (List<Administrador>)administradorDao.findAll();
+        return (List<Administrador>) administradorDao.findAll();
     }
 
-    @Transactional
     public Optional<Administrador> findOne(Long id) {
         return administradorDao.findById(id);
     }
 
-    @Transactional
     public Administrador saveOrUpdate(Administrador administrador) {
         return administradorDao.save(administrador);
     }
 
-    @Transactional
     public void delete(Long id) {
         administradorDao.deleteById(id);
     }
-    
+
 }
